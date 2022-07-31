@@ -74,7 +74,7 @@ public class HeroesServiceTest {
     }
 
     @Test
-    void findById(){
+    void findById_OK(){
         Hero heroMock = Mocks.getHero();
 
         //given
@@ -87,6 +87,20 @@ public class HeroesServiceTest {
         BDDAssertions.then(result.getStatusCode().is2xxSuccessful()).isTrue();
         BDDAssertions.then(((Hero)result.getBody()).getId()).isEqualTo(heroMock.getId());
         BDDAssertions.then(((Hero)result.getBody()).getName()).isEqualTo(heroMock.getName());
+    }
+
+    @Test
+    void findById_NotFound(){
+
+        //given
+        BDDMockito.given(heroesRepository.findById(anyLong()))
+                .willReturn(Optional.empty());
+        //when
+        var result = heroesService.findById(1l);
+
+        //then
+        BDDAssertions.then(result.getStatusCode().is4xxClientError()).isTrue();
+
     }
 
     @Test
