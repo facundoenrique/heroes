@@ -28,7 +28,7 @@ public interface HeroesControllerDoc {
                             schema = @Schema(implementation = HeroRequest.class),
                             examples = { @ExampleObject(value = ApiDocConstants.HERO_SAVE)})}))
     @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "Ok", content = @Content),
+            @ApiResponse(responseCode = "201", description = "Created", content = @Content),
             @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content),
             @ApiResponse(responseCode = "409", description = "Conflict", content = @Content),
             @ApiResponse(responseCode = "500", description = "Internal Error", content = @Content)
