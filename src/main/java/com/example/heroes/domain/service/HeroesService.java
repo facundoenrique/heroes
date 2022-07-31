@@ -6,6 +6,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.HttpClientErrorException;
 import org.thymeleaf.util.StringUtils;
 
 @Service
@@ -27,7 +28,7 @@ public class HeroesService {
     }
 
     public ResponseEntity findById(Long id) {
-        return ResponseEntity.ok(heroesRepository.findById(id));
+        return ResponseEntity.ok(heroesRepository.findById(id).orElseThrow(() -> new HttpClientErrorException(HttpStatus.NOT_FOUND)));
     }
 
 
