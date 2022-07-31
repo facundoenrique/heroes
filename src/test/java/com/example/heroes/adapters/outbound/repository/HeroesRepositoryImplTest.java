@@ -24,21 +24,21 @@ public class HeroesRepositoryImplTest {
     private HeroesRepositoryH2 heroesRepositoryH2;
 
     @InjectMocks
-    private HeroesRepository heroesRepository;
+    private HeroesRepositoryImpl heroesRepository;
 
     @Test
     void save(){
 
         //mock
         Hero heroMock = Mocks.getHero();
-
+        Hero heroMockRequest = Mocks.getHero();
         //given
         BDDMockito.given(heroesRepositoryH2.save(any(Hero.class)))
                 .willReturn(heroMock);
 
-        heroMock.setId(null);
+        heroMockRequest.setId(null);
         //when
-        var result = heroesRepository.save(heroMock);
+        var result = heroesRepository.save(heroMockRequest);
 
         //then
         BDDAssertions.then(result).isNotNull();
@@ -96,8 +96,8 @@ public class HeroesRepositoryImplTest {
 
         //then
         BDDAssertions.then(result).isNotNull();
-        BDDAssertions.then(result.getId()).isEqualTo(1l);
-        BDDAssertions.then(result.getName()).isEqualTo(heroMock.getName());
+        BDDAssertions.then(result.get().getId()).isEqualTo(1l);
+        BDDAssertions.then(result.get().getName()).isEqualTo(heroMock.getName());
 
 
     }

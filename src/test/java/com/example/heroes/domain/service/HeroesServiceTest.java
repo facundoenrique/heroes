@@ -1,7 +1,6 @@
 package com.example.heroes.domain.service;
 
 import com.example.heroes.adapters.outbound.repository.HeroesRepositoryImpl;
-import com.example.heroes.adapters.outbound.repository.HeroesRepositoryImplTest;
 import com.example.heroes.domain.model.Hero;
 import com.example.heroes.utils.Mocks;
 import org.assertj.core.api.BDDAssertions;
