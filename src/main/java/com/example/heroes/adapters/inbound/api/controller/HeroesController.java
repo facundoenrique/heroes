@@ -31,7 +31,7 @@ public class HeroesController implements HeroesControllerDoc {
     }
 
     @Override
-    @GetMapping
+    @GetMapping("{id}")
     public ResponseEntity findById(@PathVariable @NotNull Long id) {
         return heroesService.findById(id);
     }

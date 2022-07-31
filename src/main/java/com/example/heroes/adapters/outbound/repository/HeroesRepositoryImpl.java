@@ -30,7 +30,7 @@ public class HeroesRepositoryImpl implements HeroesRepository {
 
     @Override
     public List<Hero> findByName(String value) {
-        return heroesRepositoryH2.findByName(value);
+        return heroesRepositoryH2.findByNameContaining(value);
     }
 
     @Override

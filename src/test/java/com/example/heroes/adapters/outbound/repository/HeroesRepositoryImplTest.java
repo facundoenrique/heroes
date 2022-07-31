@@ -70,7 +70,7 @@ public class HeroesRepositoryImplTest {
         Hero heroMock = Mocks.getHero();
 
         //given
-        BDDMockito.given(heroesRepositoryH2.findByName(anyString()))
+        BDDMockito.given(heroesRepositoryH2.findByNameContaining(anyString()))
                 .willReturn(List.of(heroMock));
 
         //when

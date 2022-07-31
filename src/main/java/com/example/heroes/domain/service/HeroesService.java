@@ -3,14 +3,16 @@ package com.example.heroes.domain.service;
 import com.example.heroes.domain.model.Hero;
 import com.example.heroes.domain.repository.HeroesRepository;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.HttpClientErrorException;
-import org.thymeleaf.util.StringUtils;
 
 @Service
 @RequiredArgsConstructor
+@Slf4j
 public class HeroesService {
 
     private final HeroesRepository heroesRepository;
@@ -20,7 +22,7 @@ public class HeroesService {
     }
 
     public ResponseEntity findByName(String value) {
-        if (StringUtils.isEmpty(value)){
+        if (StringUtils.isBlank(value)){
             return new ResponseEntity(heroesRepository.findAll(),HttpStatus.OK);
         } else {
             return new ResponseEntity(heroesRepository.findByName(value),HttpStatus.OK);

@@ -1,7 +1,6 @@
 package com.example.heroes.adapters.inbound.api.controller;
 
 import com.example.heroes.adapters.inbound.api.request.HeroRequest;
-import com.example.heroes.domain.model.Hero;
 import com.example.heroes.utils.ApiDocConstants;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;

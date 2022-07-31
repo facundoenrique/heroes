@@ -7,5 +7,5 @@ import java.util.List;
 
 
 public interface HeroesRepositoryH2 extends CrudRepository<Hero, Long> {
-    List<Hero> findByName(String name);
+    List<Hero> findByNameContaining(String name);
 }

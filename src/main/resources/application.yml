@@ -18,4 +18,4 @@ logging:
     ROOT: INFO
     web: DEBUG
     tx: DEBUG
-    com.nubox: DEBUG
+    com.example: DEBUG
