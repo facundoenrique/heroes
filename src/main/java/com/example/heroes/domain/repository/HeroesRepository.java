@@ -1,6 +1,5 @@
 package com.example.heroes.domain.repository;
 
-import com.example.heroes.adapters.inbound.api.request.HeroRequest;
 import com.example.heroes.domain.model.Hero;
 
 
