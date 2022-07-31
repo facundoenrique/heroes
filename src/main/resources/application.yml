@@ -1,0 +1,21 @@
+# SERVER CONFIG
+server:
+  servlet.context-path: /api
+  port: 8080
+
+spring:
+  datasource:
+    url: jdbc:h2:mem:mydb
+    username: sa
+    password: password
+    driverClassName: org.h2.Driver
+  jpa:
+    spring.jpa.database-platform: org.hibernate.dialect.H2Dialect
+
+
+logging:
+  level:
+    ROOT: INFO
+    web: DEBUG
+    tx: DEBUG
+    com.nubox: DEBUG
