@@ -77,7 +77,6 @@ public class HeroesRepositoryImplTest {
         List<Hero> result = heroesRepository.findByName("man");
 
         //then
-        //then
         BDDAssertions.then(result).isNotNull();
         BDDAssertions.then(result.get(0).getId()).isEqualTo(1l);
         BDDAssertions.then(result.get(0).getName()).isEqualTo(heroMock.getName());

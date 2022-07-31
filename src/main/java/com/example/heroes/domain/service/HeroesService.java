@@ -1,11 +1,12 @@
 package com.example.heroes.domain.service;
 
-import com.example.heroes.adapters.inbound.api.request.HeroRequest;
 import com.example.heroes.domain.model.Hero;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 @Service
+@RequiredArgsConstructor
 public class HeroesService {
     public ResponseEntity save(Hero hero){
         return null;

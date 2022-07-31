@@ -13,6 +13,7 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.List;
+import java.util.Optional;
 
 import static org.mockito.ArgumentMatchers.*;
 
@@ -79,7 +80,7 @@ public class HeroesServiceTest {
 
         //given
         BDDMockito.given(heroesRepository.findById(anyLong()))
-                .willReturn(heroMock);
+                .willReturn(Optional.of(heroMock));
         //when
         var result = heroesService.findById(1l);
 
