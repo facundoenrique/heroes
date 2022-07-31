@@ -11,11 +11,14 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class HeroRequest {
+
+    private Long id;
     private String name;
 
     public Hero toDomain(){
         return Hero.builder()
                 .name(name)
+                .id(id)
                 .build();
     }
 }

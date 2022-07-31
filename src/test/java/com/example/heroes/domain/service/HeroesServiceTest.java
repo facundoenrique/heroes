@@ -112,7 +112,7 @@ public class HeroesServiceTest {
         BDDMockito.given(heroesRepository.save(any(Hero.class)))
                 .willReturn(heroMock);
         //when
-        var result = heroesService.save(heroMock);
+        var result = heroesService.update(heroMock);
 
         //then
         BDDAssertions.then(result.getStatusCode().is2xxSuccessful()).isTrue();

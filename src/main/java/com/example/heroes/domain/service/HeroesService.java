@@ -2,6 +2,7 @@ package com.example.heroes.domain.service;
 
 import com.example.heroes.domain.model.Hero;
 import com.example.heroes.domain.repository.HeroesRepository;
+import io.swagger.models.Response;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
@@ -9,6 +10,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.HttpClientErrorException;
+
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -30,11 +33,15 @@ public class HeroesService {
     }
 
     public ResponseEntity findById(Long id) {
-        return ResponseEntity.ok(heroesRepository.findById(id).orElseThrow(() -> new HttpClientErrorException(HttpStatus.NOT_FOUND)));
+        Optional<Hero> hero = heroesRepository.findById(id);
+        if (hero.isPresent()){
+            return ResponseEntity.ok(hero);
+        }
+        return new ResponseEntity(HttpStatus.NOT_FOUND);
     }
 
 
     public ResponseEntity update(Hero hero) {
-        return new ResponseEntity(heroesRepository.save(hero), HttpStatus.OK);
+        return new ResponseEntity(heroesRepository.update(hero), HttpStatus.OK);
     }
 }

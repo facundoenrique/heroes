@@ -11,6 +11,5 @@ public interface HeroesRepository {
     List<Hero> findAll();
     List<Hero> findByName(String value);
     Optional<Hero> findById(Long id);
-
     Hero update(Hero hero);
 }
