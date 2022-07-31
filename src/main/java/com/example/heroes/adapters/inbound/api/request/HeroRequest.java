@@ -6,6 +6,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import javax.validation.constraints.NotEmpty;
+
 @Builder
 @Data
 @AllArgsConstructor
@@ -13,6 +15,7 @@ import lombok.NoArgsConstructor;
 public class HeroRequest {
 
     private Long id;
+    @NotEmpty
     private String name;
 
     public Hero toDomain(){

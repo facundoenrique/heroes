@@ -15,28 +15,25 @@ import javax.validation.constraints.NotNull;
 @RequestMapping("heroes")
 @RequiredArgsConstructor
 @Validated
-public class HeroesController implements HeroesControllerDoc {
+public class HeroesController {
 
     private final HeroesService heroesService;
-    @Override
+
     @PostMapping
     public ResponseEntity save(@RequestBody @NotNull @Valid HeroRequest hero) {
         return heroesService.save(hero.toDomain());
     }
 
-    @Override
     @GetMapping
     public ResponseEntity findByName(@RequestParam(required = false) String value) {
         return heroesService.findByName(value);
     }
 
-    @Override
     @GetMapping("{id}")
     public ResponseEntity findById(@PathVariable @NotNull Long id) {
         return heroesService.findById(id);
     }
 
-    @Override
     @PutMapping
     public ResponseEntity update(@RequestBody @NotNull @Valid HeroRequest hero) {
         return heroesService.update(hero.toDomain());
