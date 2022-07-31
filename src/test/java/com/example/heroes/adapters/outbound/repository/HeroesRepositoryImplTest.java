@@ -56,7 +56,7 @@ public class HeroesRepositoryImplTest {
                 .willReturn(List.of(heroMock));
 
         //when
-        List<Hero> result = heroesRepository.findAll("man");
+        List<Hero> result = heroesRepository.findAll();
 
         //then
         //then
