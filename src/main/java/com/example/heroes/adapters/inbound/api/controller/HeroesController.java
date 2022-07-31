@@ -21,7 +21,7 @@ public class HeroesController implements HeroesControllerDoc {
     @Override
     @PostMapping
     public ResponseEntity save(@RequestBody @NotNull @Valid HeroRequest hero) {
-        heroesService.save(hero.toDomain())
+        return heroesService.save(hero.toDomain());
     }
 
     @Override
@@ -33,7 +33,7 @@ public class HeroesController implements HeroesControllerDoc {
     @Override
     @GetMapping
     public ResponseEntity findById(@PathVariable @NotNull Long id) {
-        return heroesService.findById(id)
+        return heroesService.findById(id);
     }
 
     @Override
