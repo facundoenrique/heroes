@@ -47,6 +47,24 @@ public class HeroesRepositoryImplTest {
     }
 
     @Test
+    void findAll(){
+        //mock
+        Hero heroMock = Mocks.getHero();
+
+        //given
+        BDDMockito.given(heroesRepositoryH2.findAll())
+                .willReturn(List.of(heroMock));
+
+        //when
+        List<Hero> result = heroesRepository.findAll("man");
+
+        //then
+        //then
+        BDDAssertions.then(result).isNotNull();
+        BDDAssertions.then(result.get(0).getId()).isEqualTo(1l);
+        BDDAssertions.then(result.get(0).getName()).isEqualTo(heroMock.getName());
+    }
+    @Test
     void findByName(){
         //mock
         Hero heroMock = Mocks.getHero();

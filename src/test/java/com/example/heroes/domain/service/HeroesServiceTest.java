@@ -42,6 +42,22 @@ public class HeroesServiceTest {
     }
 
     @Test
+    void findAll(){
+        Hero heroMock = Mocks.getHero();
+
+        //given
+        BDDMockito.given(heroesRepository.findAll())
+                .willReturn(List.of(heroMock));
+        //when
+        var result = heroesService.findByName("man");
+
+        //then
+        BDDAssertions.then(result.getStatusCode().is2xxSuccessful()).isTrue();
+        BDDAssertions.then(((List<Hero>)result.getBody()).get(0).getId()).isEqualTo(heroMock.getId());
+        BDDAssertions.then(((List<Hero>)result.getBody()).get(0).getName()).isEqualTo(heroMock.getName());
+    }
+
+    @Test
     void findByName(){
         Hero heroMock = Mocks.getHero();
 
