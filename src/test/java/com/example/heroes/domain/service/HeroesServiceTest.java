@@ -42,11 +42,11 @@ public class HeroesServiceTest {
     }
 
     @Test
-    void findAll(){
+    void findFindByName(){
         Hero heroMock = Mocks.getHero();
 
         //given
-        BDDMockito.given(heroesRepository.findAll())
+        BDDMockito.given(heroesRepository.findByName(anyString()))
                 .willReturn(List.of(heroMock));
         //when
         var result = heroesService.findByName("man");
@@ -58,14 +58,14 @@ public class HeroesServiceTest {
     }
 
     @Test
-    void findByName(){
+    void findAll(){
         Hero heroMock = Mocks.getHero();
 
         //given
-        BDDMockito.given(heroesRepository.findByName(anyString()))
+        BDDMockito.given(heroesRepository.findAll())
                 .willReturn(List.of(heroMock));
         //when
-        var result = heroesService.findByName("man");
+        var result = heroesService.findByName(null);
 
         //then
         BDDAssertions.then(result.getStatusCode().is2xxSuccessful()).isTrue();
