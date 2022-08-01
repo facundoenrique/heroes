@@ -1,5 +1,6 @@
 package com.example.heroes.domain.service;
 
+import com.example.heroes.annotations.Time;
 import com.example.heroes.domain.model.Hero;
 import com.example.heroes.domain.repository.HeroesRepository;
 import io.swagger.models.Response;
@@ -20,10 +21,12 @@ public class HeroesService {
 
     private final HeroesRepository heroesRepository;
 
+    @Time
     public ResponseEntity save(Hero hero){
         return new ResponseEntity(heroesRepository.save(hero), HttpStatus.CREATED);
     }
 
+    @Time
     public ResponseEntity findByName(String value) {
         if (StringUtils.isBlank(value)){
             return new ResponseEntity(heroesRepository.findAll(),HttpStatus.OK);
@@ -32,6 +35,7 @@ public class HeroesService {
         }
     }
 
+    @Time
     public ResponseEntity findById(Long id) {
         Optional<Hero> hero = heroesRepository.findById(id);
         if (hero.isPresent()){
@@ -40,7 +44,7 @@ public class HeroesService {
         return new ResponseEntity(HttpStatus.NOT_FOUND);
     }
 
-
+    @Time
     public ResponseEntity update(Hero hero) {
         return new ResponseEntity(heroesRepository.update(hero), HttpStatus.OK);
     }

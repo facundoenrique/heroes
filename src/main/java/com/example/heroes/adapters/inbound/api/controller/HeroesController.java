@@ -2,6 +2,7 @@ package com.example.heroes.adapters.inbound.api.controller;
 
 import com.example.heroes.adapters.inbound.api.request.HeroRequest;
 import com.example.heroes.adapters.inbound.api.request.HeroUpdateRequest;
+import com.example.heroes.annotations.Time;
 import com.example.heroes.domain.service.HeroesService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.cache.annotation.Cacheable;

@@ -1,5 +1,6 @@
 package com.example.heroes.adapters.inbound.api.controller;
 
+import com.example.heroes.annotations.Time;
 import com.example.heroes.domain.model.User;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.AuthorityUtils;
