@@ -35,7 +35,7 @@ public class HeroesService {
     public ResponseEntity findById(Long id) {
         Optional<Hero> hero = heroesRepository.findById(id);
         if (hero.isPresent()){
-            return ResponseEntity.ok(hero);
+            return ResponseEntity.ok(hero.get());
         }
         return new ResponseEntity(HttpStatus.NOT_FOUND);
     }

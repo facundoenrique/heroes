@@ -1,6 +1,7 @@
 package com.example.heroes.utils;
 
 import com.example.heroes.adapters.inbound.api.request.HeroRequest;
+import com.example.heroes.adapters.inbound.api.request.HeroUpdateRequest;
 import com.example.heroes.domain.model.Hero;
 
 
@@ -11,10 +12,16 @@ public class Mocks {
                 .build();
     }
 
+    public static HeroUpdateRequest getHeroUpdateRequest(){
+        return HeroUpdateRequest.builder()
+                .name("superman")
+                .build();
+    }
+
     public static Hero getHero(){
         return Hero.builder()
                 .id(1l)
-                .name("supermeman")
+                .name("superman")
                 .build();
     }
 

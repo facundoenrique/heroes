@@ -1,6 +1,7 @@
 package com.example.heroes.adapters.inbound.api.controller;
 
 import com.example.heroes.adapters.inbound.api.request.HeroRequest;
+import com.example.heroes.adapters.inbound.api.request.HeroUpdateRequest;
 import com.example.heroes.domain.model.Hero;
 import com.example.heroes.domain.service.HeroesService;
 import com.example.heroes.utils.Mocks;
@@ -29,7 +30,7 @@ import static org.mockito.ArgumentMatchers.*;
 @ExtendWith(MockitoExtension.class)
 public class HeroesControllerTest  {
 
-    private final String PATH = "heroes";
+    private final String PATH = "/heroes";
     private MockMvc mockMvc;
 
     @Mock
@@ -100,20 +101,19 @@ public class HeroesControllerTest  {
 
 
         //when
-        ResultActions resultActions = mockMvc.perform(MockMvcRequestBuilders.get(PATH + "/")
-                .param("id", "1l")
+        ResultActions resultActions = mockMvc.perform(MockMvcRequestBuilders.get(PATH+"/{id}",1l)
                 .contentType(MediaType.APPLICATION_JSON));
 
         // Then
         resultActions.andExpect(MockMvcResultMatchers.status().isOk());
-        resultActions.andExpect(MockMvcResultMatchers.jsonPath("name").exists());
         resultActions.andExpect(MockMvcResultMatchers.jsonPath("id").exists());
+        resultActions.andExpect(MockMvcResultMatchers.jsonPath("name").exists());
     }
 
     @Test
     void update() throws Exception {
         //Mocks
-        HeroRequest heroRequestMock = Mocks.getHeroRequest();
+        HeroUpdateRequest heroRequestMock = Mocks.getHeroUpdateRequest();
         Hero heroMock = Mocks.getHero();
 
         //given

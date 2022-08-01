@@ -1,7 +1,7 @@
 package com.example.heroes.adapters.inbound.api.controller;
 
 import com.example.heroes.adapters.inbound.api.request.HeroRequest;
-import com.example.heroes.domain.model.Hero;
+import com.example.heroes.adapters.inbound.api.request.HeroUpdateRequest;
 import com.example.heroes.domain.service.HeroesService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -35,7 +35,7 @@ public class HeroesController {
     }
 
     @PutMapping
-    public ResponseEntity update(@RequestBody @NotNull @Valid HeroRequest hero) {
+    public ResponseEntity update(@RequestBody @NotNull @Valid HeroUpdateRequest hero) {
         return heroesService.update(hero.toDomain());
     }
 }

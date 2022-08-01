@@ -109,15 +109,15 @@ public class HeroesServiceTest {
         Hero heroMock = Mocks.getHero();
 
         //given
-        BDDMockito.given(heroesRepository.save(any(Hero.class)))
+        BDDMockito.given(heroesRepository.update(any(Hero.class)))
                 .willReturn(heroMock);
         //when
         var result = heroesService.update(heroMock);
-
+        Hero heroResult = (Hero)result.getBody();
         //then
         BDDAssertions.then(result.getStatusCode().is2xxSuccessful()).isTrue();
-        BDDAssertions.then(((Hero)result.getBody()).getId()).isEqualTo(heroMock.getId());
-        BDDAssertions.then(((Hero)result.getBody()).getName()).isEqualTo(heroMock.getName());
+        BDDAssertions.then(heroResult.getId()).isEqualTo(heroMock.getId());
+        BDDAssertions.then(heroResult.getName()).isEqualTo(heroMock.getName());
 
     }
 }
