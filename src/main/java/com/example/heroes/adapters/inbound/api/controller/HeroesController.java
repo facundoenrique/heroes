@@ -4,6 +4,7 @@ import com.example.heroes.adapters.inbound.api.request.HeroRequest;
 import com.example.heroes.adapters.inbound.api.request.HeroUpdateRequest;
 import com.example.heroes.domain.service.HeroesService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
@@ -25,11 +26,13 @@ public class HeroesController {
     }
 
     @GetMapping
+    @Cacheable(value="value")
     public ResponseEntity findByName(@RequestParam(required = false) String value) {
         return heroesService.findByName(value);
     }
 
     @GetMapping("{id}")
+    @Cacheable(value="id")
     public ResponseEntity findById(@PathVariable @NotNull Long id) {
         return heroesService.findById(id);
     }
